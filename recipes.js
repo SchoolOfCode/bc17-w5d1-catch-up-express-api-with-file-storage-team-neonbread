@@ -16,7 +16,22 @@ export async function getRecipes() {
 }
 
 // GET A RECIPE BY ID
-export async function getRecipeByID(id) {}
+export async function getRecipeByID(id) {
+   
+        try {
+            const data = await fs.readFile('recipes.json', 'utf8');
+            const recipes = JSON.parse(data);
+            const recipe = recipes.find(recipe => recipe.id === id); // Corrected this line
+            if (!recipe) {
+                throw new Error(`No recipe with ID ${id} found.`);
+            }
+            return recipe;
+       
+    } catch (error){
+        console.error('Error reading recipes.json:', error);
+        return [];
+    }
+}
 
 // CREATE A RECIPE
 export async function createRecipe(newRecipe) {}

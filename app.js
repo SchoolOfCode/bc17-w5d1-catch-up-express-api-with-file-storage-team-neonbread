@@ -22,6 +22,15 @@ app.get('/api/recipes', async (req, res) => {
       res.status(500).json({ error: 'Failed to fetch recipes' });
   }
 });
+app.get('/api/recipes/:id', async (req, res) => {
+  try {
+    
+      const recipes = await getRecipeByID(req.params.id);
+      res.json(recipes);
+  } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch recipes' });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
