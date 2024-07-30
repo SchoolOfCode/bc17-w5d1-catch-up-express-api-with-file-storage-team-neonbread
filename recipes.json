@@ -9,5 +9,38 @@
     ],
     "instructions": "Put the butter in your mouth, wait 2 seconds to allow slight melting. Then follow with the toast. Swish around for 10-15 seconds to allow even coating of butter on the toast. Then add the beans, slowly.\n  \n    Season to taste.",
     "image": "https://natashaskitchen.com/wp-content/uploads/2019/04/Best-Burger-4-500x375.jpg"
+  },
+  {
+    "id": "2e2156ef-788f-411c-bb5a-3568b64a7df4",
+    "title": "Bannana on Toast",
+    "ingredients": [
+      "\"150g of pea\", \"150g of butter\", \"150g of toast\""
+    ],
+    "instructions": "Put the butter in your mouth, wait 2 seconds to allow slight melting. Then follow with the toast. Swish around for 10-15 seconds to allow even coating of butter on the toast. Then add the beans, slowly.\\n  \\n    Season to taste.",
+    "image": "https://natashaskitchen.com/wp-content/uploads/2019/04/Best-Burger-4-500x375.jpg"
+  },
+  {
+    "id": "5a0f8a74-ba3c-468c-b5ad-f468529ece4b",
+    "title": "Updated Pancake Recipe",
+    "ingredients": [
+      "Flour",
+      "Eggs",
+      "Milk",
+      "Sugar",
+      "Butter"
+    ],
+    "instructions": "Mix all ingredients and cook on medium heat."
+  },
+  {
+    "id": "e7f6f7b6-498d-4e74-a309-31ed8655f743",
+    "title": "Updated1 Pancake Recipe",
+    "ingredients": [
+      "Flour",
+      "Eggs",
+      "Milk",
+      "Sugar",
+      "Butter"
+    ],
+    "instructions": "Mix all ingredients and cook on medium heat."
   }
 ]

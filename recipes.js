@@ -6,7 +6,7 @@ const fileName = "recipes.json";
 // GET ALL RECIPES
 export async function getRecipes() {
     try {
-        const data = await fs.readFile('recipes.json', 'utf8');
+        const data = await fs.readFile(fileName, 'utf8');
         const recipes = JSON.parse(data);
         return Array.isArray(recipes) ? recipes : [];
         // return recipes;
@@ -20,7 +20,7 @@ export async function getRecipes() {
 export async function getRecipeByID(id) {
    
         try {
-            const data = await fs.readFile('recipes.json', 'utf8');
+            const data = await fs.readFile(fileName, 'utf8');
             const recipes = JSON.parse(data);
             const recipe = Array.isArray(recipes) ? recipes.find(recipe => recipe.id === id) : null;
             // const recipe = recipes.find(recipe => recipe.id === id); // Corrected this line
@@ -46,14 +46,14 @@ export async function createRecipe(newRecipe) {
         };
 
         // Get existing recipes
-        const data = await fs.readFile('recipes.json', 'utf8').catch(() => '[]'); // Handle case where file does not exist
+        const data = await fs.readFile(fileName, 'utf8').catch(() => '[]'); // Handle case where file does not exist
         const recipes = JSON.parse(data);
         const recipesArray = Array.isArray(recipes) ? recipes : [];
         // Add the new recipe to the array
         recipesArray.push(newrecipe);
 
         // Write the updated recipes array back to the file
-        await fs.writeFile('recipes.json', JSON.stringify(recipesArray, null, 2));
+        await fs.writeFile(fileName, JSON.stringify(recipesArray, null, 2));
 
         // Return the newly created recipe
         return newrecipe;
@@ -65,7 +65,46 @@ export async function createRecipe(newRecipe) {
 }
 
 // UPDATE A RECIPE BY ID
-export async function updateRecipeByID(id, updatedRecipe) {}
+export async function updateRecipeByID(id, updatedRecipe) {
+    try{
+
+const data = await fs.readFile(fileName, 'utf8').catch(() => '[]');
+const recipes = JSON.parse(data);
+let recipeIndex = recipes.findIndex(recipe => recipe.id === id);
+
+    if (recipeIndex === -1) {
+      throw new Error('Recipe not found');
+    }
+
+    recipes[recipeIndex] = {
+      ...recipes[recipeIndex],
+      ...updatedRecipe,
+    };
+
+await fs.writeFile(fileName, JSON.stringify(recipes, null, 2));
+
+return recipes[recipeIndex];
+    }
+    catch(error){
+        throw error;
+    }
+}
 
 // DELETE A RECIPE BY ID
-export async function deleteRecipeByID(id) {}
+export async function deleteRecipeByID(id) {
+   try { 
+    const data = await fs.readFile(fileName, 'utf-8').catch(() => '[]');
+    const recipes = JSON.parse(data);
+    let recipeIndex = recipes.findIndex(recipe => recipe.id === id);
+    if(recipeIndex === -1){
+      throw new Error('Recipe not found');
+    }
+    const deletedRecipe = recipes.splice(recipeIndex, 1);
+
+    await fs.writeFile(fileName, JSON.stringify(recipes, null, 2));
+
+    return deletedRecipe;
+}
+catch(error){
+
+}}
